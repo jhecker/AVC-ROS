@@ -101,7 +101,7 @@ int main(int argc, char **argv) {
     nh.param("devicePath", devicePath, std::string("/dev/ttyUSB0"));
     ROS_INFO_STREAM("Device path for serial communication is set to " << devicePath);
     nh.param("baudRate", baudRate, 115200);
-    ROS_INFO_STREAM("Baud rate for serial communication is set to " << baudRate);
+    ROS_INFO_STREAM("Serial communication data rate is set to " << baudRate << " baud");
     if (aBridge.usbSerial.openUSBPort(devicePath, baudRate) <= 0) {
         ROS_ERROR_STREAM("Failed to successfully open a serial connection to device path " << devicePath);
     }
@@ -117,9 +117,10 @@ int main(int argc, char **argv) {
     aBridge.commandVelocitySubscriber = nh.subscribe("commandVelocity", 10, &ABridge::commandVelocityHandler, &aBridge);
     
     //Initialize timer
-    double deltaTime;
-    nh.param("deltaTime", deltaTime, 0.1);
-    aBridge.publishTimer = nh.createTimer(ros::Duration(deltaTime), &ABridge::serialActivityTimer, &aBridge);
+    double timerPeriod;
+    nh.param("timerPeriod", timerPeriod, 0.1);
+    ROS_INFO_STREAM("Time interval between serial data requests is set to " << timerPeriod << " seconds");
+    aBridge.publishTimer = nh.createTimer(ros::Duration(timerPeriod), &ABridge::serialActivityTimer, &aBridge);
     
     //Load TF prefix string (used for TF frame name resolution)
     ros::NodeHandle anh;
