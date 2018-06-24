@@ -1,0 +1,10 @@
+<launch>
+    <arg name="robot_name" default="echo"/>
+    <group ns="$(arg robot_name)">
+        <param name="tf_prefix" value="$(arg robot_name)"/>
+
+        <node name="abridge" pkg="abridge" type="abridge">
+            <param name="device" value="/dev/ttyACM0"/>
+        </node>
+    </group>
+</launch>
