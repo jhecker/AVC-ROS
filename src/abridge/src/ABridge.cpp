@@ -119,7 +119,7 @@ int main(int argc, char **argv) {
     //Initialize timer
     double deltaTime;
     nh.param("deltaTime", deltaTime, 0.1);
-    aBridge.publishTimer = nh.createTimer(ros::Duration(0.1), &ABridge::serialActivityTimer, &aBridge);
+    aBridge.publishTimer = nh.createTimer(ros::Duration(deltaTime), &ABridge::serialActivityTimer, &aBridge);
     
     //Load TF prefix string (used for TF frame name resolution)
     ros::NodeHandle anh;
