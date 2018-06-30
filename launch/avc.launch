@@ -4,7 +4,7 @@
         <param name="tf_prefix" value="$(arg robot_name)"/>
 
         <node name="abridge" pkg="abridge" type="abridge">
-            <param name="devicePath" value="/dev/ttyACM0"/>
+            <param name="devicePath" value="/dev/arduino"/>
             <param name="baudRate" value="115200"/>
             <param name="timerPeriod" value="0.1"/>
         </node>
