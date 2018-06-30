@@ -40,7 +40,7 @@ void ABridge::serialActivityTimer(const ros::TimerEvent& e) {
         }
 
         if (dataSet.size() >= 3 && dataSet.at(1) == "1") {
-            if (dataSet.at(0) == "IMU") {
+            if ((dataSet.at(0) == "IMU") && (dataSet.size() == 11)) {
                 imu.header.stamp = ros::Time::now();
                 imu.linear_acceleration.x = atof(dataSet.at(2).c_str());
                 imu.linear_acceleration.y = 0; //atof(dataSet.at(3).c_str());
@@ -50,7 +50,7 @@ void ABridge::serialActivityTimer(const ros::TimerEvent& e) {
                 imu.angular_velocity.z = atof(dataSet.at(7).c_str());
                 imu.orientation = tf::createQuaternionMsgFromRollPitchYaw(atof(dataSet.at(8).c_str()), atof(dataSet.at(9).c_str()), atof(dataSet.at(10).c_str()));
             }
-            else if (dataSet.at(0) == "ODOM") {
+            else if ((dataSet.at(0) == "ODOM") && (dataSet.size() == 8)) {
                 odom.header.stamp = ros::Time::now();
                 odom.pose.pose.position.x += atof(dataSet.at(2).c_str()) / 100.0;
                 odom.pose.pose.position.y += atof(dataSet.at(3).c_str()) / 100.0;
@@ -60,15 +60,15 @@ void ABridge::serialActivityTimer(const ros::TimerEvent& e) {
                 odom.twist.twist.linear.y = atof(dataSet.at(6).c_str()) / 100.0;
                 odom.twist.twist.angular.z = atof(dataSet.at(7).c_str());
             }
-            else if (dataSet.at(0) == "USL") {
+            else if ((dataSet.at(0) == "USL") && (dataSet.size() == 3)) {
                 sonarLeft.header.stamp = ros::Time::now();
                 sonarLeft.range = atof(dataSet.at(2).c_str()) / 100.0;
             }
-            else if (dataSet.at(0) == "USC") {
+            else if ((dataSet.at(0) == "USC") && (dataSet.size() == 3)) {
                 sonarCenter.header.stamp = ros::Time::now();
                 sonarCenter.range = atof(dataSet.at(2).c_str()) / 100.0;
             }
-            else if (dataSet.at(0) == "USR") {
+            else if ((dataSet.at(0) == "USR") && (dataSet.size() == 3)) {
                 sonarRight.header.stamp = ros::Time::now();
                 sonarRight.range = atof(dataSet.at(2).c_str()) / 100.0;
             }
