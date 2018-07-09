@@ -27,5 +27,12 @@
                                             false, false, true,
                                             false, false, false]</rosparam>
         </node>
+        <node name="lidar" pkg="sweep_ros" type="sweep_node">
+            <param name="serial_port" value="/dev/ttyUSB0"/>
+            <param name="serial_baudrate" value="115200"/>
+            <param name="frame_id" value="$(arg robot_name)/lidar"/>
+            <param name="rotation_speed" value="10"/>
+            <remap from="pc2" to="lidar/scan"/>
+        </node>
     </group>
 </launch>
