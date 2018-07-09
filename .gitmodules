@@ -1,0 +1,3 @@
+[submodule "src/sweep-ros"]
+	path = src/sweep-ros
+	url = https://github.com/scanse/sweep-ros.git
