@@ -3,3 +3,4 @@ devel
 install
 logs
 .catkin_tools
+-catkin_workspace
