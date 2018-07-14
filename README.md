@@ -1,7 +1,7 @@
 AVC-ROS
 ==============
 
-ROS code to control a Swarmie for the SparkFun AVC
+ROS packages required to control a Swarmie for the SparkFun AVC
 
 ## Prerequisites:
 * [Ubuntu 16.04 (Xenial Xerus)](http://releases.ubuntu.com/16.04/) (Desktop or Server)
