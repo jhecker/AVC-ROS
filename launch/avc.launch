@@ -4,7 +4,7 @@
         <param name="tf_prefix" value="$(arg robot_name)"/>
 
         <node name="abridge" pkg="abridge" type="abridge">
-            <param name="devicePath" value="/dev/arduino"/>
+            <param name="devicePath" value="/dev/swarmie/arduino"/>
             <param name="baudRate" value="115200"/>
             <param name="timerPeriod" value="0.1"/>
         </node>
@@ -28,7 +28,7 @@
                                             false, false, false]</rosparam>
         </node>
         <node name="lidar" pkg="sweep_ros" type="sweep_node">
-            <param name="serial_port" value="/dev/ttyUSB0"/>
+            <param name="serial_port" value="/dev/swarmie/scanse"/>
             <param name="serial_baudrate" value="115200"/>
             <param name="frame_id" value="$(arg robot_name)/lidar"/>
             <param name="rotation_speed" value="10"/>
