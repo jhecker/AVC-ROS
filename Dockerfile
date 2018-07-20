@@ -25,6 +25,9 @@ RUN git clone https://github.com/scanse/sweep-sdk.git && \
     cmake .. && \
     cmake --build . --target install
 
+# Set library path to ensure that libsweep can be found by sweep-ros
+ENV LD_LIBRARY_PATH $LD_LIBRARY_PATH:/usr/local/lib
+
 # Set swarmie as default user
 USER swarmie
 WORKDIR /home/swarmie
