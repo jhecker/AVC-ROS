@@ -17,6 +17,14 @@ RUN useradd -ms /bin/bash swarmie
 # Add swarmie to dialout group to enable serial communication
 RUN usermod -a -G dialout swarmie
 
+# Clone and install sweep-sdk
+RUN git clone https://github.com/scanse/sweep-sdk.git && \
+    cd sweep-sdk/libsweep && \
+    mkdir build && \
+    cd build && \
+    cmake .. && \
+    cmake --build . --target install
+
 # Set swarmie as default user
 USER swarmie
 WORKDIR /home/swarmie
@@ -24,10 +32,10 @@ WORKDIR /home/swarmie
 # Set up ROS environment for user shell
 RUN /bin/bash -c "echo 'source /opt/ros/kinetic/setup.bash' >> /home/swarmie/.bashrc"
 
-# Pull AVC-ROS into container under swarmie user
+# Clone AVC-ROS into container under swarmie user
 RUN git clone https://github.com/jhecker/AVC-ROS.git
 
-# Pull AVC-ROS submodules
+# Clone AVC-ROS submodules
 RUN cd AVC-ROS && \
     git submodule init && \
     git submodule update
