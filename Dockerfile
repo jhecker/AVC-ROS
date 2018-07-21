@@ -10,7 +10,9 @@ FROM ros:kinetic-perception
 RUN apt-get update && apt-get install -y \
     python-catkin-tools \
     ros-kinetic-robot-localization \
-    ros-kinetic-gmapping
+    ros-kinetic-gmapping \
+    ros-kinetic-pointcloud-to-laserscan \
+    ros-kinetic-urg-node
 
 # Add standard swarmie user
 RUN useradd -ms /bin/bash swarmie
