@@ -9,7 +9,8 @@ FROM ros:kinetic-perception
 #   installing packages non-interactively. We can safely ignore it.
 RUN apt-get update && apt-get install -y \
     python-catkin-tools \
-    ros-kinetic-robot-localization
+    ros-kinetic-robot-localization \
+    ros-kinetic-gmapping
 
 # Add standard swarmie user
 RUN useradd -ms /bin/bash swarmie
