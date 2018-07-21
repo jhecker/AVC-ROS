@@ -3,7 +3,7 @@
     <group ns="$(arg robot_name)">
         <param name="tf_prefix" value="$(arg robot_name)"/>
 
-        <node name="lidar_tf" pkg="tf" type="static_transform_publisher" args="0 0 0.3 0 0 0 base_link lidar 10"/>
+        <node name="lidar_tf" pkg="tf" type="static_transform_publisher" args="0 0 0.3 0 0 0 $(arg robot_name)/base_link $(arg robot_name)/lidar 10"/>
 
         <node name="abridge" pkg="abridge" type="abridge">
             <param name="devicePath" value="/dev/swarmie/arduino"/>
