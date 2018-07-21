@@ -6,9 +6,11 @@ ROS packages required to control a Swarmie for the SparkFun AVC
 ## Initial machine configuration:
 
 Add the following rules to ```/etc/udev/rules.d/99-usb-serial.rules```:
-- ```SUBSYSTEM=="tty", ATTRS{idVendor}=="1ffb", ATTRS{idProduct}=="2300", SYMLINK+="swarmie/arduino"```
-- ```SUBSYSTEM=="tty", ATTRS{idVendor}=="1546", ATTRS{idProduct}=="01a6", SYMLINK+="swarmie/ublox"```
-- ```SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6015", SYMLINK+="swarmie/scanse"```
+```
+SUBSYSTEM=="tty", ATTRS{idVendor}=="1ffb", ATTRS{idProduct}=="2300", SYMLINK+="swarmie/arduino"
+SUBSYSTEM=="tty", ATTRS{idVendor}=="1546", ATTRS{idProduct}=="01a6", SYMLINK+="swarmie/ublox"
+SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6015", SYMLINK+="swarmie/scanse"
+```
 
 ## Setup w/ Docker:
 
@@ -44,11 +46,13 @@ roslaunch AVC-ROS/launch/avc.launch
 * [Ubuntu 16.04 (Xenial Xerus)](http://releases.ubuntu.com/16.04/) (Desktop or Server)
 * [ROS Kinetic Kame](http://wiki.ros.org/kinetic/Installation/Ubuntu) (either the perception [ROS metapackage](http://www.ros.org/reps/rep-0142.html), or a superset of this metapackage)
 * The following ROS packages (available through APT) in addition to the perception metapackage:
-    ```python-catkin-tools```
-    ```ros-kinetic-robot-localization```
-    ```ros-kinetic-gmapping```
-    ```ros-kinetic-pointcloud-to-laserscan```
-    ```ros-kinetic-urg-node```
+  ```
+  python-catkin-tools
+  ros-kinetic-robot-localization
+  ros-kinetic-gmapping
+  ros-kinetic-pointcloud-to-laserscan
+  ros-kinetic-urg-node
+  ```
 
 ### Building:
 
