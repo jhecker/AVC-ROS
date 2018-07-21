@@ -6,9 +6,9 @@ ROS packages required to control a Swarmie for the SparkFun AVC
 ## Initial machine configuration:
 
 Add the following rules to ```/etc/udev/rules.d/99-usb-serial.rules```:
->    ```SUBSYSTEM=="tty", ATTRS{idVendor}=="1ffb", ATTRS{idProduct}=="2300", SYMLINK+="swarmie/arduino"```
->    ```SUBSYSTEM=="tty", ATTRS{idVendor}=="1546", ATTRS{idProduct}=="01a6", SYMLINK+="swarmie/ublox"```
->    ```SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6015", SYMLINK+="swarmie/scanse"```
+- ```SUBSYSTEM=="tty", ATTRS{idVendor}=="1ffb", ATTRS{idProduct}=="2300", SYMLINK+="swarmie/arduino"```
+- ```SUBSYSTEM=="tty", ATTRS{idVendor}=="1546", ATTRS{idProduct}=="01a6", SYMLINK+="swarmie/ublox"```
+- ```SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6015", SYMLINK+="swarmie/scanse"```
 
 ## Setup w/ Docker:
 
