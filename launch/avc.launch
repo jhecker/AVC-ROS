@@ -71,5 +71,13 @@
             <remap from="map_metadata" to="slam/map_metadata"/>
             <remap from="scan" to="lidar/scan"/>
         </node>
+
+        <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+            <rosparam file="$(find move_base_config)/config/costmap_common_params.yaml" command="load"/>
+            <rosparam file="$(find move_base_config)/config/costmap_common_params.yaml" command="load"/>
+            <rosparam file="$(find move_base_config)/config/local_costmap_params.yaml" command="load"/>
+            <rosparam file="$(find move_base_config)/config/global_costmap_params.yaml" command="load"/>
+            <rosparam file="$(find move_base_config)/config/base_local_planner_params.yaml" command="load"/>
+        </node>
     </group>
 </launch>
