@@ -55,8 +55,7 @@ RUN cd AVC-ROS && \
 #   through during the Docker container building process.
 RUN /bin/bash -c "cd AVC-ROS ;\
     source /opt/ros/kinetic/setup.bash ;\
-    catkin config --install ;\
     catkin build --no-status --no-summary --no-notify" >/dev/null 2>/dev/null
 
 # Set up AVC-ROS environment for user shell
-RUN /bin/bash -c "echo 'source /home/swarmie/AVC-ROS/install/setup.bash' >> /home/swarmie/.bashrc"
+RUN /bin/bash -c "echo 'source /home/swarmie/AVC-ROS/devel/setup.bash' >> /home/swarmie/.bashrc"
