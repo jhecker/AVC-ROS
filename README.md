@@ -5,12 +5,14 @@ ROS packages required to control a Swarmie for the SparkFun AVC
 
 ## Initial machine configuration:
 
-Add the following rules to ```/etc/udev/rules.d/99-usb-serial.rules```:
+If connecting to hardware ([Pololu A-Star microcontroller](https://www.pololu.com/product/3104), [MIKROE-1032 GPS board](https://www.mouser.com/ProductDetail/mikroElektronika/MIKROE-1032/?qs=sGAEpiMZZMuyGAGFEBEmZt%2fsR%2fWVGgy3), or [Scanse Sweep LiDAR](https://www.robotshop.com/en/sweep-v1-360-laser-scanner.html) (discontinued), add the following rules to ```/etc/udev/rules.d/99-usb-serial.rules```:
 ```
 SUBSYSTEM=="tty", ATTRS{idVendor}=="1ffb", ATTRS{idProduct}=="2300", SYMLINK+="swarmie/arduino"
 SUBSYSTEM=="tty", ATTRS{idVendor}=="1546", ATTRS{idProduct}=="01a6", SYMLINK+="swarmie/ublox"
 SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6015", SYMLINK+="swarmie/scanse"
 ```
+
+The [AVC-Arduino](https://github.com/jhecker/AVC-Arduino) repo provides an interface to access lower-level sensors ([Pololu AltIMU-10 v4](https://www.pololu.com/product/2470), [Pololu quadrature wheel encoders](https://www.pololu.com/product/2827), and [PING))) ultrasonic distance sensors](https://www.pololu.com/product/1605)), as well as [Pololu metal gearmotors](https://www.pololu.com/product/2827) through the [Pololu A-Star](https://www.pololu.com/product/3104).
 
 ## Setup w/ Docker:
 
