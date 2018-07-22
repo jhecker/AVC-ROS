@@ -53,6 +53,7 @@ roslaunch AVC-ROS/launch/avc.launch
   ros-kinetic-pointcloud-to-laserscan
   ros-kinetic-urg-node
   ```
+* [Sweep SDK](https://github.com/scanse/sweep-sdk) to provide API support to the Sweep ROS package
 
 ### Building:
 
@@ -67,8 +68,7 @@ cd AVC-ROS
 git submodule init
 git submodule update
 
-# build and install
-catkin config --install
+# build project
 catkin build
 ```
 
