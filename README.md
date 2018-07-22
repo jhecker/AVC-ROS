@@ -48,6 +48,7 @@ roslaunch AVC-ROS/launch/avc.launch
 * [Ubuntu 16.04 (Xenial Xerus)](http://releases.ubuntu.com/16.04/) (Desktop or Server)
 * [ROS Kinetic Kame](http://wiki.ros.org/kinetic/Installation/Ubuntu) (either the perception [ROS metapackage](http://www.ros.org/reps/rep-0142.html), or a superset of this metapackage)
 * The following ROS packages (available through APT) in addition to the perception metapackage:
+
   ```
   python-catkin-tools
   ros-kinetic-robot-localization
