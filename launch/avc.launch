@@ -60,7 +60,7 @@
                 # 2->inf : Parallelism level
                 concurrency_level: 0
             </rosparam>
-            <rosparam param="target_frame" subst_value="True">$(arg robot_name)/lidar</rosparam>
+            <rosparam param="target_frame" subst_value="true">$(arg robot_name)/lidar</rosparam>
         </node>
 
         <node pkg="gmapping" type="slam_gmapping" name="slam">
@@ -73,11 +73,43 @@
         </node>
 
         <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
-            <rosparam file="$(find move_base_config)/config/costmap_common_params.yaml" command="load"/>
-            <rosparam file="$(find move_base_config)/config/costmap_common_params.yaml" command="load"/>
-            <rosparam file="$(find move_base_config)/config/local_costmap_params.yaml" command="load"/>
-            <rosparam file="$(find move_base_config)/config/global_costmap_params.yaml" command="load"/>
-            <rosparam file="$(find move_base_config)/config/base_local_planner_params.yaml" command="load"/>
+            <remap from="cmd_vel" to="abridge/commandVelocity"/>
+            <remap from="map" to="slam/map"/>
+            <remap from="odom" to="abridge/odom/filtered"/>
+            <rosparam>
+                obstacle_range: 2.5
+                raytrace_range: 3.0
+                footprint: [[0.15, 0.15], [-0.15, 0.15], [-0.15, -0.15], [0.15, -0.15]]
+                inflation_radius: 0.55
+            </rosparam>
+            <rosparam param="observation_sources" subst_value="true">{sensor_frame: /$(arg robot_name)/lidar, data_type: LaserScan, topic: /$(arg robot_name)/lidar/scan, marking: true, clearing: true}</rosparam>
+            <rosparam ns="global_costmap">
+                update_frequency: 5.0
+                static_map: true
+            </rosparam>
+            <rosparam param="global_frame" subst_value="true" ns="global_costmap">map</rosparam>
+            <rosparam param="robot_base_frame" ns="global_costmap">base_link</rosparam>
+            <rosparam ns="local_costmap">
+                update_frequency: 5.0
+                publish_frequency: 2.0
+                static_map: true
+                rolling_window: true
+                width: 6.0
+                height: 6.0
+                resolution: 0.05
+            </rosparam>
+            <rosparam param="global_frame" ns="local_costmap">odom</rosparam>
+            <rosparam param="robot_base_frame" ns="local_costmap">base_link</rosparam>
+            <rosparam ns="TrajectoryPlannerROS">
+                max_vel_x: 1.66
+                min_vel_x: 0.332
+                max_vel_theta: 11.94
+                min_in_place_vel_theta: 2.38
+                acc_lim_theta: 3.2
+                acc_lim_x: 2.5
+                acc_lim_y: 2.5
+                holonomic_robot: false
+            </rosparam>
         </node>
     </group>
 </launch>
