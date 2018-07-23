@@ -5,7 +5,7 @@ ROS packages required to control a Swarmie for the SparkFun AVC
 
 ## Initial configuration:
 
-If connecting to hardware ([Pololu A-Star microcontroller](https://www.pololu.com/product/3104), [MIKROE-1032 GPS board](https://www.mouser.com/ProductDetail/mikroElektronika/MIKROE-1032/?qs=sGAEpiMZZMuyGAGFEBEmZt%2fsR%2fWVGgy3), or [Scanse Sweep LiDAR](https://www.robotshop.com/en/sweep-v1-360-laser-scanner.html) (discontinued)), add the following rules to ```/etc/udev/rules.d/99-usb-serial.rules```:
+If connecting to hardware ([Pololu A-Star microcontroller](https://www.pololu.com/product/3104), [MIKROE-1032 GPS](https://www.mouser.com/ProductDetail/mikroElektronika/MIKROE-1032/?qs=sGAEpiMZZMuyGAGFEBEmZt%2fsR%2fWVGgy3), or [Scanse Sweep LiDAR](https://www.robotshop.com/en/sweep-v1-360-laser-scanner.html) (discontinued)), add the following rules to ```/etc/udev/rules.d/99-usb-serial.rules```:
 ```
 SUBSYSTEM=="tty", ATTRS{idVendor}=="1ffb", ATTRS{idProduct}=="2300", SYMLINK+="swarmie/arduino"
 SUBSYSTEM=="tty", ATTRS{idVendor}=="1546", ATTRS{idProduct}=="01a6", SYMLINK+="swarmie/ublox"
