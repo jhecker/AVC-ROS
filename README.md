@@ -51,9 +51,10 @@ roslaunch AVC-ROS/launch/avc.launch
 
   ```
   python-catkin-tools
-  ros-kinetic-robot-localization
   ros-kinetic-gmapping
+  ros-kinetic-move-base
   ros-kinetic-pointcloud-to-laserscan
+  ros-kinetic-robot-localization
   ros-kinetic-urg-node
   ```
 * [Sweep SDK](https://github.com/scanse/sweep-sdk) to provide API support to the Sweep ROS package
