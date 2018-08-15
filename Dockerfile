@@ -8,12 +8,22 @@ FROM ros:kinetic-perception
 #   since apt-utils is not installed", which is related to the fact that we are 
 #   installing packages non-interactively. We can safely ignore it.
 RUN apt-get update && apt-get install -y \
+    software-properties-common \
     python-catkin-tools \
+    ros-kinetic-amcl \
+    ros-kinetic-dwa-local-planner \
     ros-kinetic-gmapping \
     ros-kinetic-move-base \
     ros-kinetic-pointcloud-to-laserscan \
     ros-kinetic-robot-localization \
+    ros-kinetic-teb-local-planner \
     ros-kinetic-urg-node
+
+# Install ubuntu-make and the Arduino IDE for reprog'ing the microcontroller
+RUN add-apt-repository ppa:lyzardking/ubuntu-make && \
+    apt-get update && apt-get install -y ubuntu-make && \
+    umake electronics arduino /usr/local/bin/arduino-ide && \
+    ln -sfn /usr/local/bin/arduino-ide/arduino /usr/local/bin/arduino
 
 # Add standard swarmie user
 RUN useradd -ms /bin/bash swarmie
@@ -41,6 +51,9 @@ RUN /bin/bash -c "echo 'source /opt/ros/kinetic/setup.bash' >> /home/swarmie/.ba
 
 # Clone AVC-ROS into container under swarmie user
 RUN git clone https://github.com/jhecker/AVC-ROS.git
+
+# Clone AVC-Arduino into container
+RUN git clone https://github.com/jhecker/AVC-Arduino.git
 
 # Clone AVC-ROS submodules
 RUN cd AVC-ROS && \
