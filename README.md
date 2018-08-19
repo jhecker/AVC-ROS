@@ -26,6 +26,9 @@ The [AVC-Arduino](https://github.com/jhecker/AVC-Arduino) repo provides an inter
 # clone the AVC-ROS repository
 git clone https://github.com/jhecker/AVC-ROS.git
 
+# add yourself to the docker group
+sudo usermod -a -G docker $USER
+
 # build the Docker image
 docker build -t avc-ros AVC-ROS
 ```
