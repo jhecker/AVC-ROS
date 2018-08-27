@@ -52,8 +52,8 @@ void ABridge::serialActivityTimer(const ros::TimerEvent& e) {
             }
             else if ((dataSet.at(0) == "ODOM") && (dataSet.size() == 8)) {
                 odom.header.stamp = ros::Time::now();
-                odom.pose.pose.position.x += atof(dataSet.at(2).c_str());
-                odom.pose.pose.position.y += atof(dataSet.at(3).c_str());
+                odom.pose.pose.position.x = atof(dataSet.at(2).c_str());
+                odom.pose.pose.position.y = atof(dataSet.at(3).c_str());
                 odom.pose.pose.position.z = 0.0;
                 odom.pose.pose.orientation = tf::createQuaternionMsgFromYaw(atof(dataSet.at(4).c_str()));
                 odom.twist.twist.linear.x = atof(dataSet.at(5).c_str());
