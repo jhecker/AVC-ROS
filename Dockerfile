@@ -12,7 +12,9 @@ RUN apt-get update && apt-get install -y \
     python-catkin-tools \
     ros-kinetic-amcl \
     ros-kinetic-dwa-local-planner \
+    ros-kinetic-follow-waypoints \
     ros-kinetic-gmapping \
+    ros-kinetic-map-server \
     ros-kinetic-move-base \
     ros-kinetic-pointcloud-to-laserscan \
     ros-kinetic-robot-localization \
