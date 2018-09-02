@@ -78,6 +78,7 @@
         </node>
 
         <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+            <param name="controller_frequency" value="10"/>
             <remap from="cmd_vel" to="abridge/commandVelocity"/>
             <remap from="map" to="slam/map"/>
             <remap from="odom" to="abridge/odom/filtered"/>
