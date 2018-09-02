@@ -79,6 +79,9 @@ void ABridge::serialActivityTimer(const ros::TimerEvent& e) {
     imu.header.frame_id = tf::resolve(tfPrefix, "base_link");
     odom.header.frame_id = tf::resolve(tfPrefix, "odom");
     odom.child_frame_id = tf::resolve(tfPrefix, "base_link");
+    sonarLeft.header.frame_id = tf::resolve(tfPrefix, "sonarLeft");
+    sonarCenter.header.frame_id = tf::resolve(tfPrefix, "sonarCenter");
+    sonarRight.header.frame_id = tf::resolve(tfPrefix, "sonarRight");
 
     // Publish data
     imuPublish.publish(imu);

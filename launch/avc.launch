@@ -3,7 +3,12 @@
     <group ns="$(arg robot_name)">
         <param name="tf_prefix" value="$(arg robot_name)"/>
 
-        <node name="lidar_tf" pkg="tf" type="static_transform_publisher" args="0.15 0.025 0.3 0.175 0 0 $(arg robot_name)/base_link $(arg robot_name)/lidar 100"/>
+        <node name="camera_tf" pkg="tf" type="static_transform_publisher" args="0.127 0 .2286 -1.57 0 -1.57 $(arg robot_name)/base_link $(arg robot_name)/camera 100"/>
+        <node name="imu_tf" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 $(arg robot_name)/base_link $(arg robot_name)/imu 100"/>
+        <node name="lidar_tf" pkg="tf" type="static_transform_publisher" args="0 0 0.27 0 0 0 $(arg robot_name)/base_link $(arg robot_name)/lidar 100"/>
+        <node name="sonarLeft_tf" pkg="tf" type="static_transform_publisher" args="0 0 0 0.384 0 0 $(arg robot_name)/base_link $(arg robot_name)/sonarLeft 100"/>
+        <node name="sonarCenter_tf" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 $(arg robot_name)/base_link $(arg robot_name)/sonarCenter 100"/>
+        <node name="sonarRight_tf" pkg="tf" type="static_transform_publisher" args="0 0 0 -0.384 0 0 $(arg robot_name)/base_link $(arg robot_name)/sonarRight 100"/>
 
         <node name="abridge" pkg="abridge" type="abridge">
             <param name="devicePath" value="/dev/swarmie/arduino"/>
