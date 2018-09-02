@@ -76,7 +76,7 @@ void ABridge::serialActivityTimer(const ros::TimerEvent& e) {
     }
 
     //Set ROS frame IDs
-    imu.header.frame_id = tf::resolve(tfPrefix, "base_link");
+    imu.header.frame_id = tf::resolve(tfPrefix, "imu");
     odom.header.frame_id = tf::resolve(tfPrefix, "odom");
     odom.child_frame_id = tf::resolve(tfPrefix, "base_link");
     sonarLeft.header.frame_id = tf::resolve(tfPrefix, "sonarLeft");
