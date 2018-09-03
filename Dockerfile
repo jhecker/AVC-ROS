@@ -63,7 +63,7 @@ RUN cd AVC-ROS && \
 RUN git clone https://github.com/jhecker/AVC-Arduino.git
 
 # Clone AVC-Arduino submodules
-RUN cd AVC-Arduino &&
+RUN cd AVC-Arduino && \
     git submodule init && \
     git submodule update
 
