@@ -75,6 +75,11 @@ void ABridge::serialActivityTimer(const ros::TimerEvent& e) {
         }
     }
 
+    //Filter out gyro noise based on incoming encoder data
+    if (odom.twist.twist.angular.z == 0.) {
+        imu.angular_velocity.z = 0.;
+    }
+
     //Set ROS frame IDs
     imu.header.frame_id = tf::resolve(tfPrefix, "imu");
     odom.header.frame_id = tf::resolve(tfPrefix, "odom");
