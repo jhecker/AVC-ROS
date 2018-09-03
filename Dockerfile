@@ -54,11 +54,16 @@ RUN /bin/bash -c "echo 'source /opt/ros/kinetic/setup.bash' >> /home/swarmie/.ba
 # Clone AVC-ROS into container under swarmie user
 RUN git clone https://github.com/jhecker/AVC-ROS.git
 
+# Clone AVC-ROS submodules
+RUN cd AVC-ROS && \
+    git submodule init && \
+    git submodule update
+
 # Clone AVC-Arduino into container
 RUN git clone https://github.com/jhecker/AVC-Arduino.git
 
-# Clone AVC-ROS submodules
-RUN cd AVC-ROS && \
+# Clone AVC-Arduino submodules
+RUN cd AVC-Arduino &&
     git submodule init && \
     git submodule update
 
